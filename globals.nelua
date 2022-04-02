@@ -2,6 +2,7 @@ require "math"
 
 ##[[
 if ccinfo.is_linux then
+  linklib "c"
   linklib "m"
 end
 ]]
