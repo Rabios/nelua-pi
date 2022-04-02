@@ -1,5 +1,4 @@
 -- https://www.amazon.com/exec/obidos/ASIN/0486204294/ref=nosim/ericstreasuretro
-require "math"
 require "globals"
 
 local function main(): cint

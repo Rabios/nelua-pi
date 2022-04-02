@@ -1,5 +1,4 @@
 -- https://en.wikipedia.org/wiki/Bellard%27s_formula
-require "math"
 require "globals"
 
 local function main(): cint

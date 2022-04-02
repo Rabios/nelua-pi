@@ -1,3 +1,11 @@
+require "math"
+
+##[[
+if ccinfo.is_linux then
+  linklib "m"
+end
+]]
+
 ## cinclude "<stdio.h>"
 global function printf(format: cstring <const>, ...: cvarargs): cint <cimport, nodecl> end
 
@@ -9,5 +17,5 @@ global function fprintf(file: *FILE, format: cstring <const>, ...: cvarargs): ci
 ## end
 
 global function factorial(n: uint64): clongdouble
-  return ((n == 0) and 1 or (n * factorial(n - 1)))
+  return ((n == 0) and 1.0 or (n * factorial(n - 1)))
 end

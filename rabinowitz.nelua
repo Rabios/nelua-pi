@@ -1,5 +1,4 @@
 -- https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml
-require "math"
 require "globals"
 
 local function main(): cint

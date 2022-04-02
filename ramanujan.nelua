@@ -1,9 +1,8 @@
 -- https://en.wikipedia.org/wiki/Ramanujan%E2%80%93Sato_series
-require "math"
 require "globals"
 
 local function main(): cint
-  local k: uint64 = 0
+  local k: uint64
   local x: clongdouble = #[((2.0 * math.sqrt(2.0)) / 9801.0)]#
   local n: clongdouble
 

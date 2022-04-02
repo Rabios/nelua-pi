@@ -1,5 +1,4 @@
 -- https://en.wikipedia.org/wiki/Madhava_series
-require "math"
 require "globals"
 
 local function main(): cint

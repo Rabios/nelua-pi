@@ -1,5 +1,4 @@
 -- https://mathworld.wolfram.com/ConvergenceImprovement.html
-require "math"
 require "globals"
 
 local function main(): cint
