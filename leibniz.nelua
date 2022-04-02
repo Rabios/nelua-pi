@@ -1,0 +1,43 @@
+-- https://en.wikipedia.org/wiki/Leibniz_formula_for_pi
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64
+  local n: clongdouble
+  
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("leibniz_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local pi: clongdouble
+    
+    local a: clongdouble = math.pow(-1, k)
+    local b: clongdouble = 2 * k + 1
+
+    n = n + (@clongdouble)(a / b)
+    pi = 4.0 * n
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

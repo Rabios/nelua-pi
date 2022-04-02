@@ -1,0 +1,41 @@
+-- https://mathworld.wolfram.com/ConvergenceImprovement.html
+require "math"
+require "globals"
+
+local function main(): cint
+  local i: uint64
+  local a: clongdouble = 1.0
+  local b: clongdouble = 3.0
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("euler_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (i <= 20)) do
+    local pi: clongdouble = 2.0 * (1.0 + (a / b))
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    a = a + 1.0
+    b = b + 2.0
+
+    i = i + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

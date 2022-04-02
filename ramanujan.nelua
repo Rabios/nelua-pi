@@ -1,0 +1,44 @@
+-- https://en.wikipedia.org/wiki/Ramanujan%E2%80%93Sato_series
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64 = 0
+  local x: clongdouble = #[((2.0 * math.sqrt(2.0)) / 9801.0)]#
+  local n: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("ramanujan_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local pi: clongdouble
+    
+    local a: clongdouble = factorial(4 * k) * (1103 + 26390 * k)
+    local b: clongdouble = math.pow(factorial(k), 4) * math.pow(396, 4 * k)
+
+    n = n + (a / b)
+    pi = 1.0 / (x * n)
+    
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+    
+    k = k + 1
+  end
+  
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+  
+  return 0
+end
+
+return main()

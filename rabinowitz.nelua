@@ -1,0 +1,40 @@
+-- https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml
+require "math"
+require "globals"
+
+local function main(): cint
+  local i: uint64
+  local pi: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("rabinowitz_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (i <= 20)) do
+    local a: clongdouble = math.pow(factorial(i), 2) * math.pow(2, i + 1)
+    local b: clongdouble = factorial(2 * i + 1)
+
+    pi = pi + (a / b)
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    i = i + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

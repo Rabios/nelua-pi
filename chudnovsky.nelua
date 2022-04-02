@@ -1,0 +1,43 @@
+-- https://en.wikipedia.org/wiki/Chudnovsky_algorithm
+require "math"
+require "globals"
+
+local function main(): cint
+  local q: uint64
+  local n: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("chudnovsky_res.txt", "w")
+  
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (q <= 20)) do
+    local pi: clongdouble
+    
+    local a: clongdouble = math.pow(-1, q) * factorial(6 * q) * (545140134 * q + 13591409)
+    local b: clongdouble = factorial(3 * q) * math.pow(factorial(q), 3) * math.pow(640320, (3 * q) + 1.5)
+
+    n = n + (a / b)
+    pi = 1.0 / (12.0 * n)
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    q = q + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

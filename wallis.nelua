@@ -1,0 +1,43 @@
+-- https://en.wikipedia.org/wiki/Wallis_product
+require "math"
+require "globals"
+
+local function main(): cint
+  local n: uint64 = 1
+  local prod: clongdouble = 1.0
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("wallis_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (n <= 20)) do
+    local pi: clongdouble
+    
+    local a: clongdouble = 4.0 * n * n
+    local b: clongdouble = a - 1.0
+
+    prod = prod * (a / b)
+    pi = prod * 2.0
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    n = n + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

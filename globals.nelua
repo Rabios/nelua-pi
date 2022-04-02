@@ -1,0 +1,13 @@
+## cinclude "<stdio.h>"
+global function printf(format: cstring <const>, ...: cvarargs): cint <cimport, nodecl> end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+global FILE: type <cimport, nodecl, forwarddecl> = @record {}
+global function fopen(filename: cstring <const>, mode: cstring <const>): *FILE <cimport, nodecl> end
+global function fclose(file: *FILE): cint <cimport, nodecl> end
+global function fprintf(file: *FILE, format: cstring <const>, ...: cvarargs): cint <cimport, nodecl> end  
+## end
+
+global function factorial(n: uint64): clongdouble
+  return ((n == 0) and 1 or (n * factorial(n - 1)))
+end

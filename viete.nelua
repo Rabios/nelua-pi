@@ -1,0 +1,42 @@
+-- https://en.wikipedia.org/wiki/Vi%C3%A8te%27s_formula
+require "math"
+require "globals"
+
+local function main(): cint
+  local i: uint64 = 1
+  local prod: clongdouble = 1.0
+  local n: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("viete_res.txt", "w")
+  
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+  
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (i <= 20)) do
+    local pi: clongdouble
+    
+    n = math.sqrt(2.0 + n)
+    prod = prod * (n / 2.0)
+    pi = 2.0 / prod
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    i = i + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

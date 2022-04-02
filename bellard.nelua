@@ -1,0 +1,50 @@
+-- https://en.wikipedia.org/wiki/Bellard%27s_formula
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64
+  local x: clongdouble = #[1.0 / 64.0]#
+  local n: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("bellard_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local pi: clongdouble
+
+    local n1: clongdouble = math.pow(-1.0, k) / math.pow(2.0, 10 * k)
+    local n2: clongdouble = math.pow(2.0, 5) / (4 * k + 1)
+    local n3: clongdouble = 1.0 / (4 * k + 3)
+    local n4: clongdouble = math.pow(2.0, 8) / (10 * k + 1)
+    local n5: clongdouble = math.pow(2.0, 6) / (10 * k + 3)
+    local n6: clongdouble = 4.0 / (10 * k + 5)
+    local n7: clongdouble = 4.0 / (10 * k + 7)
+    local n8: clongdouble = 1.0 / (10 * k + 9)
+    
+    n = n + (n1 * (-n2 - n3 + n4 - n5 - n6 - n7 + n8))
+    pi = n * x
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

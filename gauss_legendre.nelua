@@ -1,0 +1,52 @@
+-- https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64
+  local a: clongdouble = 1.0
+  local b: clongdouble = #[1.0 / math.sqrt(2)]#
+  local t: clongdouble = #[1.0 / 4.0]#
+  local p: clongdouble = 1.0
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("gauss_legendre_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+  
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local pi: clongdouble
+
+    local prev_a: clongdouble = a
+    local prev_b: clongdouble = b
+    local prev_t: clongdouble = t
+    local prev_p: clongdouble = p
+
+    a = (prev_a + prev_b) / 2.0
+    b = math.sqrt(prev_a * prev_b)
+    t = prev_t - prev_p * ((prev_a - a) * (prev_a - a))
+    p = 2 * prev_p
+
+    pi = ((a + b) * (a + b)) / (4.0 * t)
+  
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

@@ -1,0 +1,40 @@
+-- https://mathworld.wolfram.com/PiFormulas.html
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64
+  local pi: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("abraham_sharp_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local a: clongdouble = 2.0 * math.pow(-1.0, k) * math.pow(3.0, 1.0 / 2.0 - k)
+    local b: clongdouble = 2.0 * k + 1.0
+    
+    pi = pi + (a / b)
+  
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

@@ -1,0 +1,44 @@
+-- https://www.amazon.com/exec/obidos/ASIN/0486204294/ref=nosim/ericstreasuretro
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64 = 1
+  local n: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("smith_res.txt", "w")
+  
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local pi: clongdouble
+
+    local x: clongdouble = math.pow(-1.0, k + 1)
+    local a: clongdouble = x / (4 * k - 1)
+    local b: clongdouble = x / (4 * k - 3)
+
+    n = n + (a + b)
+    pi = (n * 4.0) / #[math.sqrt(2.0)]#
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()

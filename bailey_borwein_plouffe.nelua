@@ -1,0 +1,43 @@
+-- https://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula
+require "math"
+require "globals"
+
+local function main(): cint
+  local k: uint64
+  local pi: clongdouble
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  local f: *FILE = fopen("bailey_borwein_plouffe_res.txt", "w")
+
+  if not f then
+    print("ERROR: failed to create file for writing results!")
+    return -1
+  end
+## end
+
+  while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
+    local a: clongdouble = (1.0 / math.pow(16, k))
+    local b: clongdouble = (4.0 / (@clongdouble)((8 * k) + 1))
+    local c: clongdouble = (2.0 / (@clongdouble)((8 * k) + 4))
+    local d: clongdouble = (1.0 / (@clongdouble)((8 * k) + 5))
+    local e: clongdouble = (1.0 / (@clongdouble)((8 * k) + 6))
+    
+    pi = pi + (a * (b - c - d - e))
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+    fprintf(f, "%.64Lf\n", pi)
+## else
+    printf("%.64Lf\n", pi)
+## end
+
+    k = k + 1
+  end
+
+## if (WRITE_OUTPUT_RESULTS == 1) then
+  fclose(f)
+## end
+
+  return 0
+end
+
+return main()
