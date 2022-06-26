@@ -15,7 +15,7 @@ local function main(): cint
 ## end
 
   while (#[(NO_LOOP_LIMIT == 1)]# and true or (k <= 20)) do
-    local a: clongdouble = 2.0 * math.pow(-1.0, k) * math.pow(3.0, 1.0 / 2.0 - k)
+    local a: clongdouble = 2.0 * math.pow(-1.0, k) * math.pow(3.0, 0.5 - k)
     local b: clongdouble = 2.0 * k + 1.0
     
     pi = pi + (a / b)

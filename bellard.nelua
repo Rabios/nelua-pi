@@ -3,7 +3,7 @@ require "globals"
 
 local function main(): cint
   local k: uint64
-  local x: clongdouble = #[1.0 / 64.0]#
+  local x: clongdouble = 0.015625
   local n: clongdouble
 
 ## if (WRITE_OUTPUT_RESULTS == 1) then
@@ -19,10 +19,10 @@ local function main(): cint
     local pi: clongdouble
 
     local n1: clongdouble = math.pow(-1.0, k) / math.pow(2.0, 10 * k)
-    local n2: clongdouble = math.pow(2.0, 5) / (4 * k + 1)
+    local n2: clongdouble = 32.0 / (4 * k + 1)
     local n3: clongdouble = 1.0 / (4 * k + 3)
-    local n4: clongdouble = math.pow(2.0, 8) / (10 * k + 1)
-    local n5: clongdouble = math.pow(2.0, 6) / (10 * k + 3)
+    local n4: clongdouble = 256.0 / (10 * k + 1)
+    local n5: clongdouble = 64.0 / (10 * k + 3)
     local n6: clongdouble = 4.0 / (10 * k + 5)
     local n7: clongdouble = 4.0 / (10 * k + 7)
     local n8: clongdouble = 1.0 / (10 * k + 9)

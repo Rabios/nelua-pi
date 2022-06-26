@@ -1,4 +1,4 @@
-# nelua_pi
+# nelua-pi
 
 Formulas/Algorithms for calculating "Digits of Pi" implemented in [Nelua](https://nelua.io) programming language!
 
@@ -23,43 +23,43 @@ Formulas/Algorithms for calculating "Digits of Pi" implemented in [Nelua](https:
 > NOTE: The file called `globals.nelua` which required by the implementations, Contains a bit of C externs and some functions that serves as supplementary...
 
 [1]: https://mathworld.wolfram.com/PiFormulas.html
-[2]: https://github.com/Rabios/nelua_pi/blob/main/abraham_sharp.nelua
+[2]: https://github.com/Rabios/nelua-pi/blob/main/abraham_sharp.nelua
 
 [3]: https://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula
-[4]: https://github.com/Rabios/nelua_pi/blob/main/bailey_borwein_plouffe.nelua
+[4]: https://github.com/Rabios/nelua-pi/blob/main/bailey_borwein_plouffe.nelua
 
 [5]: https://en.wikipedia.org/wiki/Bellard%27s_formula
-[6]: https://github.com/Rabios/nelua_pi/blob/main/bellard.nelua
+[6]: https://github.com/Rabios/nelua-pi/blob/main/bellard.nelua
 
 [7]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
-[8]: https://github.com/Rabios/nelua_pi/blob/main/chudnovsky.nelua
+[8]: https://github.com/Rabios/nelua-pi/blob/main/chudnovsky.nelua
 
 [9]: https://mathworld.wolfram.com/ConvergenceImprovement.html
-[10]: https://github.com/Rabios/nelua_pi/blob/main/euler.nelua
+[10]: https://github.com/Rabios/nelua-pi/blob/main/euler.nelua
 
 [11]: https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm
-[12]: https://github.com/Rabios/nelua_pi/blob/main/gauss_legendre.nelua
+[12]: https://github.com/Rabios/nelua-pi/blob/main/gauss_legendre.nelua
 
 [13]: https://en.wikipedia.org/wiki/Leibniz_formula_for_pi
-[14]: https://github.com/Rabios/nelua_pi/blob/main/leibniz.nelua
+[14]: https://github.com/Rabios/nelua-pi/blob/main/leibniz.nelua
 
 [15]: https://en.wikipedia.org/wiki/Madhava_series
-[16]: https://github.com/Rabios/nelua_pi/blob/main/madhava.nelua
+[16]: https://github.com/Rabios/nelua-pi/blob/main/madhava.nelua
 
 [17]: https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml
-[18]: https://github.com/Rabios/nelua_pi/blob/main/rabinowitz.nelua
+[18]: https://github.com/Rabios/nelua-pi/blob/main/rabinowitz.nelua
 
 [19]: https://en.wikipedia.org/wiki/Ramanujan%E2%80%93Sato_series
-[20]: https://github.com/Rabios/nelua_pi/blob/main/ramanujan.nelua
+[20]: https://github.com/Rabios/nelua-pi/blob/main/ramanujan.nelua
 
 [21]: http://www.amazon.com/exec/obidos/ASIN/0486204294/ref=nosim/ericstreasuretro
-[22]: https://github.com/Rabios/nelua_pi/blob/main/smith.nelua
+[22]: https://github.com/Rabios/nelua-pi/blob/main/smith.nelua
 
 [23]: https://en.wikipedia.org/wiki/Vi%C3%A8te%27s_formula
-[24]: https://github.com/Rabios/nelua_pi/blob/main/viete.nelua
+[24]: https://github.com/Rabios/nelua-pi/blob/main/viete.nelua
 
 [25]: https://en.wikipedia.org/wiki/Wallis_product
-[26]: https://github.com/Rabios/nelua_pi/blob/main/wallis.nelua
+[26]: https://github.com/Rabios/nelua-pi/blob/main/wallis.nelua
 
 ### Build
 

@@ -5,7 +5,7 @@ local function main(): cint
   local k: uint64
   local a: clongdouble = 1.0
   local b: clongdouble = #[1.0 / math.sqrt(2)]#
-  local t: clongdouble = #[1.0 / 4.0]#
+  local t: clongdouble = 0.25
   local p: clongdouble = 1.0
 
 ## if (WRITE_OUTPUT_RESULTS == 1) then
